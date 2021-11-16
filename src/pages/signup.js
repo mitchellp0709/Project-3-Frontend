@@ -6,7 +6,7 @@ const Signup = (props) => {
  
 
     const [form, setForm ] = React.useState({
-        usernmae: "",
+        username: "",
         password: ""
     })
 
@@ -18,8 +18,8 @@ const Signup = (props) => {
     return (
     <div className="form">
         <form>
-            <input type="text" name="username" value={form.usernmae} onChange={handleChange}/>
-            <input type="password" name="password" value={form.usernmae} onChange={handleChange}/>
+            <input type="text" name="username" value={form.username} onChange={handleChange}/>
+            <input type="password" name="password" value={form.username} onChange={handleChange}/>
             <input type="submit" value="signup"/>
         </form>
     </div>

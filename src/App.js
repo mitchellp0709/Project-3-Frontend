@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './styles.scss';
+import React from 'react'
+import logo from './logo.svg'
+import Header from './components/Header'
+import Signup from './pages/signup'
+import {Route, Routes, Link, Switch} from 'react-router-dom'
+import "./App.css"
+
+export const GlobalCtx = React.createContext(null)
+
+
 
 function App() {
+
+  const [gState, setGState] = React.useState({url: "http://localhost:3000"})
+
   return (
+    <GlobalCtx.Provider vaule={{gState, setGState}}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Retweet</h1>
+      <Header/>
+      <main>
+        
+          <Routes>
+          <Route exact path="/" element={<h1>Home</h1>}/>
+          <Route path="/signup" element={<h1><Signup/></h1>}/>
+          <Route path="/login" element={<h1>Login</h1>}/>
+      
+          </Routes>
+        
+
+      </main>
+      
+      
     </div>
+    </GlobalCtx.Provider>
   );
 }
 

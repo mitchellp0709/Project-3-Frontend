@@ -35,11 +35,12 @@ const Login = (props) => {
          .then(response => response.json())
          .then(data => {
              console.log(data)
-            // props.getToken(username, password)
+            props.getToken(data)
              setForm(blank)
+             navigate("/")
             
          })
-         navigate("/")
+         
 
         }
 

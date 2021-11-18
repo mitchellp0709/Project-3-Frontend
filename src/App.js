@@ -1,8 +1,8 @@
 import React from 'react'
-import logo from './logo.svg'
 import Header from './components/Header'
 import Signup from './pages/signup'
-import {Route, Routes, Link, Switch} from 'react-router-dom'
+import Login from './pages/login'
+import {Route, Routes, Link,} from 'react-router-dom'
 import "./styles.scss"
 
 
@@ -32,14 +32,14 @@ const getToken = async (un, pw) => {
   return (
     
     <div className="App">
-      <h1 className="retweet-main">Retweet</h1>
+      <Link to="/"><h1 className="retweet-main">Retweet</h1></Link>
       <Header/>
       <main>
         
           <Routes>
           <Route exact path="/" element={<h1>Home</h1>}/>
           <Route path="/signup" element={<Signup URL={URL}/>}/>
-          <Route path="/login" element={<h1>Login</h1>}/>
+          <Route path="/login" element={<Login URL={URL}/>}/>
           </Routes>
         
 

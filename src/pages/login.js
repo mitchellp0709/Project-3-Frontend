@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const Signup = (props) => {
+
+const Login = (props) => {
 
     const navigate = useNavigate()
     
@@ -24,7 +25,7 @@ const Signup = (props) => {
          const {username, password} = form
 
 
-         fetch(`${props.URL}auth/signup` , {
+         fetch(`${props.URL}auth/login` , {
              method: "post" ,
              headers: {
                  "Content-Type": "application/json"
@@ -34,10 +35,11 @@ const Signup = (props) => {
          .then(response => response.json())
          .then(data => {
              console.log(data)
+            // props.getToken(username, password)
              setForm(blank)
             
          })
-         navigate("/login")
+         navigate("/")
 
         }
 
@@ -49,10 +51,10 @@ const Signup = (props) => {
             <input type="text" name="username" value={form.username} onChange={handleChange}/>
             <input type="password" name="password" value={form.password} onChange={handleChange}/>
 
-            <input type="submit" value="signup"/>
+            <input type="submit" value="Login"/>
         </form>
     </div>
     );
 }
 
-export default Signup;
+export default Login;

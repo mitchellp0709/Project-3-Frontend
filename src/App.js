@@ -13,7 +13,7 @@ function App() {
 
   const [token, setToken] = React.useState({})
 
-const URl = "https://group-3-project-3.herokuapp.com/"
+const URL = "https://group-3-project-3.herokuapp.com/"
 
 const getToken = async (un, pw) => {
   const response = await fetch(URL + "auth/login/", {
@@ -38,9 +38,8 @@ const getToken = async (un, pw) => {
         
           <Routes>
           <Route exact path="/" element={<h1>Home</h1>}/>
-          <Route path="/signup" element={<h1><Signup/></h1>}/>
+          <Route path="/signup" element={<Signup URL={URL}/>}/>
           <Route path="/login" element={<h1>Login</h1>}/>
-      
           </Routes>
         
 

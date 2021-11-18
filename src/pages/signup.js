@@ -12,7 +12,9 @@ const Signup = (props) => {
         password: "",
     }
 
+
     const [form, setForm ] = React.useState(blank)
+
 
     const handleChange = (event) => {
         setForm({...form, [event.target.name]: event.target.value})
@@ -43,9 +45,11 @@ const Signup = (props) => {
 
     return (
     <div className="form">
+
         <form onSubmit={handleSubmit}>
-            <input type="text" name="username" value={form.usernmae} onChange={handleChange}/>
+            <input type="text" name="username" value={form.username} onChange={handleChange}/>
             <input type="password" name="password" value={form.password} onChange={handleChange}/>
+
             <input type="submit" value="signup"/>
         </form>
     </div>

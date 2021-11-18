@@ -1,0 +1,88 @@
+$maincolor: rgb(178,155,199);
+$twitter: rgb(29,155,240);
+$lightpink: rgb(241,113,160);
+$darkpink: rgb(230,66,152);
+$green: rgb(161,194,209);
+
+
+@mixin retweet-logo{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+@mixin form{
+  outline: 2px solid $twitter;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60vh;
+  background-color: $lightpink;
+  border-radius: 25px;
+}
+
+@mixin input-data{
+  width: 80%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 10px;
+  margin-top: 50px;
+  background-color: $twitter;
+  color:white;
+  border-radius: 25px;
+}
+
+
+
+body{
+  background-color: $maincolor
+}
+
+
+
+// LOG IN AND SIGN UP PAGE
+
+.retweet-main{
+@include retweet-logo;
+text-align: center;
+font-size: 4em;
+color: white;
+}
+
+.form{
+  @include form
+}
+
+input{
+  @include input-data;
+}
+
+input[type=submit]{
+  background-color: $twitter;
+  color: white;
+  border: 3px solid $green;
+  transition: .2s ease-in-out;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+input[type=submit]:hover{
+  cursor: pointer;
+  color:black;
+  background-color: $green;
+  border: 3px solid $twitter;
+}
+
+
+
+
+// HEADER STYLING
+
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+nav > a{
+  text-decoration: none;
+  color: $darkpink;
+}

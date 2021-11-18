@@ -3,7 +3,7 @@ import logo from './logo.svg'
 import Header from './components/Header'
 import Signup from './pages/signup'
 import {Route, Routes, Link, Switch} from 'react-router-dom'
-import "./App.css"
+import "./styles.scss"
 
 
 
@@ -32,7 +32,7 @@ const getToken = async (un, pw) => {
   return (
     
     <div className="App">
-      <h1>Retweet</h1>
+      <h1 className="retweet-main">Retweet</h1>
       <Header/>
       <main>
         

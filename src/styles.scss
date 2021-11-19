@@ -45,9 +45,12 @@ body{
 text-align: center;
 font-size: 4em;
 color: white;
+text-decoration: none;
 }
 
-
+a{
+  text-decoration: none;
+}
 
 .form{
   @include form;
@@ -79,7 +82,9 @@ input{
   grid-area:p;
   font-size: 1.5em;
 }
-
+::placeholder{
+  color:rgb(99, 90, 90);
+}
 
 
 

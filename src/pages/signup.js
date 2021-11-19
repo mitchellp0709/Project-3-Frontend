@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import FirstHeader from "../components/FirstHeader";
 
 
 const Signup = (props) => {
@@ -42,7 +43,8 @@ const Signup = (props) => {
         }
 
 
-    return (
+  return (<>
+      <FirstHeader/>
     <div className="form">
 
         <form onSubmit={handleSubmit} className="form-data">
@@ -52,7 +54,7 @@ const Signup = (props) => {
             <input type="submit" value="Signup"/>
         </form>
     </div>
-    );
+    </>);
 }
 
 export default Signup;

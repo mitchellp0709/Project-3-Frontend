@@ -2,6 +2,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Comment from "../components/comments";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // MUST RUN THIS TO HOST THE SERVER ON PORT 3004:
 //json-server --watch db.json --port 3004
@@ -54,23 +56,41 @@ const Main = (props) => {
 
     setPage(page + 1);
   };
-  return (<>
-    <Header/>
-    <InfiniteScroll
-      dataLength={items.length} //This is important field to render the next data
-      next={fetchData}
-      hasMore={hasMore}
-      loader={<h4>Loading...</h4>}
-      endMessage={
-        <p style={{ textAlign: "center" }}>
-          <b>Yay! You've seen every Retweet! Time to go outside!</b>
-        </p>
-      }
-    >
-      {items.map((item) => {
-        return <Comment key={item.id} item={item} />;
-      })}
-    </InfiniteScroll>
-  </>);
+
+  const navigate = useNavigate();
+
+  const nav = () => {
+    navigate("/login")
+  }
+
+  if (localStorage.token) {
+    
+  
+    return (<>
+    
+      <Header />
+      <InfiniteScroll
+        dataLength={items.length} //This is important field to render the next data
+        next={fetchData}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You've seen every Retweet! Time to go outside!</b>
+          </p>
+        }
+      >
+        {items.map((item) => {
+          return <Comment key={item.id} item={item} />;
+        })}
+      </InfiniteScroll>
+    </>);
+  }
+  else {
+    return <div className="redirect">
+      <h2>Looks like you aren't logged in!</h2>
+      <h3>Please either <Link to = "/login">login </Link> or <Link to = "/signup">signup! </Link></h3>
+    </div>
+  }
 };
 export default Main;

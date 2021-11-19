@@ -25,7 +25,6 @@ function App() {
       <Link to="/">
         <h1 className="retweet-main">Retweet</h1>
       </Link>
-      <Header />
       <main>
         <Routes>
           <Route exact path="/" element={<Main />} />

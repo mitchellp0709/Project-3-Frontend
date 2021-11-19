@@ -1,6 +1,7 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import Comment from "../components/comments";
 import { useEffect, useState } from "react";
+import Header from "../components/Header";
 
 // MUST RUN THIS TO HOST THE SERVER ON PORT 3004:
 //json-server --watch db.json --port 3004
@@ -53,7 +54,8 @@ const Main = (props) => {
 
     setPage(page + 1);
   };
-  return (
+  return (<>
+    <Header/>
     <InfiniteScroll
       dataLength={items.length} //This is important field to render the next data
       next={fetchData}
@@ -69,6 +71,6 @@ const Main = (props) => {
         return <Comment key={item.id} item={item} />;
       })}
     </InfiniteScroll>
-  );
+  </>);
 };
 export default Main;

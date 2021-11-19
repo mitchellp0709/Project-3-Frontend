@@ -22,7 +22,7 @@ const Main = (props) => {
   //state that changes how many iterations of the infinite scroll have loaded
   const [page, setPage] = useState(2);
 
-  sets the initial state of the page, in this case it is the first 20 items (based on the url)
+  // sets the initial state of the page, in this case it is the first 20 items (based on the url)
   useEffect(() => {
     //runs a api call to localhost for the items
     const getComments = async () => {

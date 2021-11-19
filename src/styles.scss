@@ -44,7 +44,7 @@ body{
 .retweet-main{
 @include retweet-logo;
 text-align: center;
-font-size: 4em;
+font-size: 1.25em;
 color: white;
 text-decoration: none;
 }
@@ -55,6 +55,7 @@ a{
 
 .form{
   @include form;
+  margin-top: 10px;
 }
 
 input{
@@ -111,17 +112,49 @@ input[type=submit]:hover{
 // HEADER STYLING
 
 nav{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 10px;
+display: grid;
+grid-template-areas:
+" s t . . . p . . . . l .";
+background-color: $green;
 }
 
+
+.tweet-symbol{
+  grid-area: s;
+  align-self: center;
+  justify-self:end;
+}
+.retweet-main{
+grid-area: t;
+justify-self: start;
+color: black;
+}
+.user-symbol{
+grid-area: p;
+align-self: center;
+}
+.logout{
+  grid-area: l;
+  transition: .2s ease-in-out;
+}
+.logout:hover{
+  cursor: pointer;
+  color:white;
+}
 nav > a{
   text-decoration: none;
   color: $darkpink;
 }
 
+// LOGIN/SIGN UP NAV STYLING
+
+.first-header{
+  display: flex;
+  justify-content: space-around;
+    h1{
+      font-size: 2em;
+    }
+}
 
 
 
@@ -152,6 +185,7 @@ body{
 }
 
 .container{
+  margin-top: 10px;
   display: flex;
   width:80%;
   justify-content: center;
@@ -201,12 +235,7 @@ b{
   width: 60px;
   height: 60px;
 }
-nav{
-  display: flex;
-  justify-content: space-around;
-  background-color: $green;
-  align-items: center;
-}
+
 
 nav > a{
 text-decoration: none;
@@ -222,4 +251,41 @@ font-weight: bolder;
 
 .redirect{
   text-align: center;
+}
+
+
+// PROFILE PAGE
+
+.profile-container{
+  height: 800px;
+}
+
+.cover-photo{
+  margin-top:0;
+  background-image: url("https://www.teahub.io/photos/full/51-513680_facebook-cover-wallpaper.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40%;
+  display: grid;
+  grid-template-areas:
+  ". . . . . . . . . . . . . ."
+  ". . . . . . . . . . . . . ." 
+  ". . . . . . . . . . . . . ." 
+  ". . . . . . . . . . . . . ." 
+  "pic . . . . . . . . . . . . ." 
+  "un . . . . . . . . . . . . ." ;
+}
+
+.profile-picture {
+  height: 150px;
+  width: 150px;
+  grid-area: pic;
+  margin-left: 20px;
+  border-radius: 50px;
+}
+.profile-user-name{
+  grid-area: un;
+  color: white;
 }

@@ -3,6 +3,7 @@ $twitter: rgb(29,155,240);
 $lightpink: rgb(241,113,160);
 $darkpink: rgb(230,66,152);
 $green: rgb(161,194,209);
+$white: rgb(241,235,245);
 
 
 @mixin retweet-logo{
@@ -119,4 +120,96 @@ nav{
 nav > a{
   text-decoration: none;
   color: $darkpink;
+}
+
+
+
+
+// COPIED FROM STYLES
+
+
+@mixin tweet-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $darkpink;
+  align-content: center;
+  margin: 5px;
+  border: 2px solid $twitter;
+  
+}
+
+body{
+  background-color: $maincolor;
+}
+
+.comment {
+  @include tweet-body;
+  color: $white;
+  
+    
+}
+
+.container{
+  display: flex;
+  width:80%;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.usertime{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5px;
+}
+.time{
+  color:black;
+}
+
+#user{
+  color:black;
+  text-align: left;
+  font-weight: bold;
+}
+
+.tweet{
+  margin:5px;
+}
+
+.respond{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+img{
+  width:25px;
+  height:20px;
+  
+}
+
+b{
+  color: white
+}
+#tweet-symbol, #user-icon{
+  width: 60px;
+  height: 60px;
+}
+nav{
+  display: flex;
+  justify-content: space-around;
+  background-color: $green;
+  align-items: center;
+}
+
+nav > a{
+text-decoration: none;
+color: $darkpink;
+font-weight: bolder;
 }

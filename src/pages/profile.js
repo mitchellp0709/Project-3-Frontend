@@ -50,7 +50,7 @@ const Profile = (props) => {
 
 
 
-  if (localStorage.token) {
+  if (localStorage.token?.length > 50) {
     return (
       <>
         <Header />

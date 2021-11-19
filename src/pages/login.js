@@ -49,8 +49,8 @@ const Login = (props) => {
     <div className="form">
 
         <form onSubmit={handleSubmit} className="form-data">
-            <input type="text" name="username" value={form.username} onChange={handleChange}/>
-            <input type="password" name="password" value={form.password} onChange={handleChange}/>
+            <input className="username" type="text" name="username" value={form.username} placeholder="Username" onChange={handleChange}/>
+            <input className="password" type="password" name="password" value={form.password} placeholder= "Password" onChange={handleChange}/>
 
             <input type="submit" value="Login"/>
         </form>

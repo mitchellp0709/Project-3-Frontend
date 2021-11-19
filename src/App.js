@@ -12,7 +12,7 @@ import "./styles.scss"
 function App() {
 
   const [token, setToken] = useState({})
-  const [username, setUsername] = ({})
+  const [username, setUsername] = useState({})
 
 const URL = "https://group-3-project-3.herokuapp.com/"
 
@@ -25,7 +25,9 @@ const getToken = async (token) => {
 
 const getUsername = async (username) => {
   await setUsername({username: username})
-  const response = await User.find({username: username})
+  const response = await fetch(`${URL}auth/${username}`, {
+    method: "get"
+  })
   const data = await response.json()
   localStorage.setItem('user_id', data._id)
 }

@@ -23,7 +23,7 @@ const Login = (props) => {
      const handleSubmit = (event) => {
          event.preventDefault()
          const {username, password} = form
-         props.setUsername(username)
+         props.getUsername(username)
 
 
          fetch(`${props.URL}auth/login` , {

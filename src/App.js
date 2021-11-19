@@ -24,8 +24,10 @@ const getToken = async (token) => {
 }
 
 const getUsername = async (username) => {
-  setUsername({username: username})
-  localStorage.setItem('username', username)
+  await setUsername({username: username})
+  const response = await User.find({username: username})
+  const data = await response.json()
+  localStorage.setItem('user_id', data._id)
 }
 
   return (

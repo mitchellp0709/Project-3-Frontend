@@ -1,6 +1,15 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
+
+const navigate = useNavigate()
+  const logout = (() => {
+    localStorage.removeItem("token")
+    navigate("/login")
+  })
+  
+
   return (
     <>
       <nav>
@@ -14,7 +23,7 @@ const Header = (props) => {
             alt="user icon"
           />
         </a>
-        <a href="#">Signout</a>
+        <button onClick={logout}>Logout</button>
       </nav>
     </>
   );

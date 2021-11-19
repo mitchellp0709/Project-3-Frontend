@@ -27,7 +27,7 @@ function App() {
       </Link>
       <main>
         <Routes>
-          <Route exact path="/" element={<Main />} />
+          <Route exact path="/" element={<Main/>} />
           <Route path="/signup" element={<Signup URL={URL} />} />
           <Route
             path="/login"

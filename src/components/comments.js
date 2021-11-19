@@ -4,7 +4,6 @@ const Comment = ({ item: { id, email, body } }) => {
       <div className="container">
         <div className="comment">
           <div className="usertime">
-            {/* <div className="id">{id}</div> */}
             <div className="user" id="user">
               ${email}
             </div>
@@ -20,7 +19,7 @@ const Comment = ({ item: { id, email, body } }) => {
             </a>
             <a href="#">
               <img
-                src="comment.png"
+                src="/comment.png"
                 alt="retweet"
               />
             </a>

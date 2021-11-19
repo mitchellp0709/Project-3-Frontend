@@ -59,9 +59,7 @@ const Main = (props) => {
 
   const navigate = useNavigate();
 
-  const nav = () => {
-    navigate("/login")
-  }
+ 
 
   if (localStorage.token) {
     

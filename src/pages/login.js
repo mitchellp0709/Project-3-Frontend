@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import FirstHeader from "../components/FirstHeader";
 
 
 const Login = (props) => {
@@ -45,7 +45,8 @@ const Login = (props) => {
         }
 
 
-    return (
+  return (<>
+      <FirstHeader/>
     <div className="form">
 
         <form onSubmit={handleSubmit} className="form-data">
@@ -55,7 +56,7 @@ const Login = (props) => {
             <input type="submit" value="Login"/>
         </form>
     </div>
-    );
+    </>);
 }
 
 export default Login;

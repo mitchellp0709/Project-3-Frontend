@@ -2,6 +2,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Comment from "../components/comments";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
+import FollowBar from '../components/FollowBar'
 
 // MUST RUN THIS TO HOST THE SERVER ON PORT 3004:
 //json-server --watch db.json --port 3004
@@ -22,41 +23,45 @@ const Main = (props) => {
   const [page, setPage] = useState(2);
 
   //sets the initial state of the page, in this case it is the first 20 items (based on the url)
-  useEffect(() => {
-    //runs a api call to localhost for the items
-    const getComments = async () => {
-      const res = await fetch(
-        `http://localhost:3004/comments?_page=1&_limit=20`
-      );
-      const data = await res.json();
-      //sets items state with the data from the api call
-      setItems(data);
-    };
-    //calls function to load the page
-    getComments();
-  }, []);
-  console.log(items);
+  // useEffect(() => {
+  //   //runs a api call to localhost for the items
+  //   const getComments = async () => {
+  //     const res = await fetch(
+  //       `http://localhost:3004/comments?_page=1&_limit=20`
+  //     );
+  //     const data = await res.json();
+  //     //sets items state with the data from the api call
+  //     setItems(data);
+  //   };
+  //   //calls function to load the page
+  //   getComments();
+  // }, []);
+  // console.log(items);
 
-  const fetchComments = async () => {
-    const res = await fetch(
-      `http://localhost:3004/comments?_page=${page}&_limit=20`
-    );
-    const data = await res.json();
-    return data;
-  };
+  // const fetchComments = async () => {
+  //   const res = await fetch(
+  //     `http://localhost:3004/comments?_page=${page}&_limit=20`
+  //   );
+  //   const data = await res.json();
+  //   return data;
+  // };
 
-  const fetchData = async () => {
-    const commentsFromServer = await fetchComments();
-    setItems([...items, ...commentsFromServer]);
-    if (commentsFromServer.length === 0 || commentsFromServer.length < 20) {
-      setHasMore(false);
-    }
+  // const fetchData = async () => {
+  //   const commentsFromServer = await fetchComments();
+  //   setItems([...items, ...commentsFromServer]);
+  //   if (commentsFromServer.length === 0 || commentsFromServer.length < 20) {
+  //     setHasMore(false);
+  //   }
 
-    setPage(page + 1);
-  };
+  //   setPage(page + 1);
+  // };
+
+  
+
   return (<>
     <Header/>
-    <InfiniteScroll
+    <FollowBar URL={props.URL} username={props.username}/>
+    {/* <InfiniteScroll
       dataLength={items.length} //This is important field to render the next data
       next={fetchData}
       hasMore={hasMore}
@@ -70,7 +75,7 @@ const Main = (props) => {
       {items.map((item) => {
         return <Comment key={item.id} item={item} />;
       })}
-    </InfiniteScroll>
+    </InfiniteScroll> */}
   </>);
 };
 export default Main;

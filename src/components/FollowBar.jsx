@@ -1,56 +1,93 @@
+import {useState, useEffect} from 'react'
+
 const FollowBar = (props) => {
+
+
+    const [userData, setUserData] = useState(null)
+    const [thisUser, setThisUser] = useState(null)
+
     const getUsers = async () => {
-        const response = await fetch(`${props.URL}/auth`, {
+        const response = await fetch(`${props.URL}auth`, {
             method: 'get'
         })
         const data = await response.json()
         return data
     }
 
-    const notFollowed = async () => {
-        const id = localStorage.getItem('user_id')
-        const response = await fetch(`${props.URL}auth/${id}`, {method: "get"})
-        const data = await response.json()
-        return getUsers().filter((x)=>{
-            !data.follows.includes(x)
+    const getThisUser = async () => {
+        const response = await fetch(`${props.URL}auth/${props.username.userId}`, {
+            method: 'get'
         })
-    }
-
-    const followed = async () => {
-        const id = localStorage.getItem('user_id')
-        const response = await fetch(`${props.URL}auth/${id}`, {method: "get"})
         const data = await response.json()
-        return getUsers().filter((x)=>{
-            data.follows.includes(x)
-        })
+        console.log(data)
+        return data
     }
 
-    const handleFollow = async (id) => {
-        event.preventDefault()
-        const userId = localStorage.getItem('user_id')
-        await fetch(`${props.URL}tweet/follow/${userId}/${id}`, {method: 'post'})
+    // const notFollowed = async () => {
+    //     const id = props.username.userId
+    //     const response = await fetch(`${props.URL}auth/${id}`, {method: "get"})
+    //     const data = await response.json()
+    //     const allUsers = await getUsers()
+    //     return await allUsers.filter((x)=>{
+    //         return !data.follows.includes(x)
+    //     })
+    // }
+
+    // const followed = async () => {
+    //     const id = props.username.userId
+    //     const response = await fetch(`${props.URL}auth/${id}`, {method: "get"})
+    //     const data = await response.json()
+    //     const allUsers = await getUsers()
+    //     return await allUsers.filter((x)=>{
+    //         data.follows.includes(x)
+    //     })
+    // }
+
+    const follow = async (id) => {
+        const userId = props.username.userId
+        await fetch(`${props.URL}tweet/follow/${userId}/${id}`, {method: 'put'})
     }
 
-    const handleUnfollow = async (id) => {
-        event.preventDefault()
-        const userId = localStorage.getItem('user_id')
-        await fetch(`${props.URL}tweet/unfollow/${userId}/${id}`, {method: 'post'})
+    const unfollow = async (id) => {
+        const userId = props.username.userId
+        await fetch(`${props.URL}tweet/unfollow/${userId}/${id}`, {method: 'put'})
     }
 
-    return <div className='follow-bar'>
-        {followed().map((x) => {
-            return <div>
-            <h4>{x.username}</h4>
-            <button onClick={()=>{handleUnfollow(x._id)}}>Unfollow</button>
+
+    useEffect(()=>{
+        getUsers().then((data)=>setUserData(data))
+        getThisUser().then((data)=>setThisUser(data))
+    }, [])
+
+    // const followData = followed()
+    // const unfollowedData = notFollowed()
+    const allData = userData
+
+
+    if (allData && thisUser) {
+        return <div className='follow-bar'>
+        {allData.map((x)=>{
+            if (thisUser.follows.includes(x._id)){
+                return <div>
+                <h4>{x.username}</h4>
+                <button key={x._id} onClick={(event)=>{
+                    event.preventDefault(); 
+                    unfollow(x._id);
+                    event.currentTarget.innerHTML = 'Unfollowed!'}}>Unfollow</button>
             </div>
-        })}
-        {notFollowed().map((x) => {
+            }
             return <div>
-            <h4>{x.username}</h4>
-            <button onClick={()=>{handleFollow(x._id)}}>Follow</button>
+                <h4>{x.username}</h4>
+                <button key={x._id} onClick={(event)=>{
+                    event.preventDefault(); 
+                    follow(x._id);
+                    event.currentTarget.innerHTML = 'Followed!'}}>Follow</button>
             </div>
         })}
     </div>
+    } else {
+        return <h1>Loading...</h1>
+    }
 }
 
 export default FollowBar

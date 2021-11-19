@@ -12,22 +12,27 @@ function App() {
  
 
   const [token, setToken] = useState({})
-  const [username, setUsername] = useState({})
+  const [userAuth, setUsername] = useState({})
 
   const URL = "https://group-3-project-3.herokuapp.com/";
 
   const getToken = async (token) => {
     setToken(token);
     localStorage.setItem("token", JSON.stringify(token));
+    
   };
 
 const getUsername = async (username) => {
-  await setUsername({username: username})
-  const response = await fetch(`${URL}auth/${username}`, {
+  setUsername({username: username})
+  console.log(username)
+  console.log(`${URL}auth/user/${username}`)
+  const response = await fetch(`${URL}auth/user/${username}`, {
     method: "get"
   })
   const data = await response.json()
-  localStorage.setItem('user_id', data._id)
+  console.log(data)
+  setUsername({userId: data[0]._id})
+  console.log(userAuth)
 }
 
   return (
@@ -37,7 +42,7 @@ const getUsername = async (username) => {
       </Link>
       <main>
         <Routes>
-          <Route exact path="/" element={<Main />} />
+          <Route exact path="/" element={<Main URL={URL} username={userAuth}/>} />
           <Route path="/signup" element={<Signup URL={URL} />} />
           <Route
             path="/login"

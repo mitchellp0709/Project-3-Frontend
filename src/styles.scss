@@ -17,14 +17,14 @@ $green: rgb(161,194,209);
   height: 60vh;
   background-color: $lightpink;
   border-radius: 25px;
+ 
+  
 }
 
 @mixin input-data{
-  width: 80%;
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 10px;
-  margin-top: 50px;
+  // width: 80%;
+  // margin-left: 5%;
+  // margin-right: 5%;
   background-color: $twitter;
   color:white;
   border-radius: 25px;
@@ -47,21 +47,50 @@ font-size: 4em;
 color: white;
 }
 
+
+
 .form{
-  @include form
+  @include form;
 }
 
 input{
   @include input-data;
 }
 
+.form-data{
+
+  display: grid;
+  grid-template-areas:
+  ". . . . ."
+  ". u u u ."
+  ". . . . ."
+  ". p p p ."
+  ". . . . ."
+  ". s s s ."
+  ". . . . .";
+  height: 100%;
+}
+
+.username{
+  grid-area: u;
+  font-size: 1.5em;
+}
+.password{
+  grid-area:p;
+  font-size: 1.5em;
+}
+
+
+
+
 input[type=submit]{
   background-color: $twitter;
   color: white;
+  font-size: 1.6em;
   border: 3px solid $green;
   transition: .2s ease-in-out;
-  font-size: 1.25em;
   font-weight: bold;
+  grid-area: s;
 }
 input[type=submit]:hover{
   cursor: pointer;

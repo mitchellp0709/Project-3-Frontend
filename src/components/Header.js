@@ -13,17 +13,21 @@ const navigate = useNavigate()
   return (
     <>
       <nav>
-        <a href="#">
+        <Link className="tweet-symbol" to="/">
           <img id="tweet-symbol" src="/twitter.png" alt="twitter symbol" />
-        </a>
-        <a href="#">
+        </Link>
+        <Link className="retweet-main" to="/">
+          <h1 className="retweet-main">Retweet</h1>
+        </Link>
+
+        <Link className="user-symbol" to="/user/id">
           <img
             id="user-icon"
             src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
             alt="user icon"
           />
-        </a>
-        <button onClick={logout}>Logout</button>
+        </Link>
+        <h2 className="logout" onClick={logout}>Logout</h2>
       </nav>
     </>
   );

@@ -1,6 +1,6 @@
-import React from "react";
+import {useState} from 'react'
 import { useNavigate } from "react-router-dom";
-import FirstHeader from "../components/FirstHeader";
+
 
 
 const Login = (props) => {
@@ -13,7 +13,7 @@ const Login = (props) => {
     }
 
 
-    const [form, setForm ] = React.useState(blank)
+    const [form, setForm ] = useState(blank)
 
 
     const handleChange = (event) => {
@@ -23,6 +23,7 @@ const Login = (props) => {
      const handleSubmit = (event) => {
          event.preventDefault()
          const {username, password} = form
+         props.getUsername(username)
 
 
          fetch(`${props.URL}auth/login` , {
@@ -45,8 +46,7 @@ const Login = (props) => {
         }
 
 
-  return (<>
-      <FirstHeader/>
+    return (
     <div className="form">
 
         <form onSubmit={handleSubmit} className="form-data">
@@ -56,7 +56,7 @@ const Login = (props) => {
             <input type="submit" value="Login"/>
         </form>
     </div>
-    </>);
+    );
 }
 
 export default Login;

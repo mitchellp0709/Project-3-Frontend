@@ -2,6 +2,9 @@ import {useState, useEffect} from 'react'
 
 const FollowBar = (props) => {
 
+    const userId = localStorage.getItem('userId')
+    // console.log(userId)
+    const token = localStorage.getItem('token')
 
     const [userData, setUserData] = useState(null)
     const [thisUser, setThisUser] = useState(null)
@@ -15,11 +18,10 @@ const FollowBar = (props) => {
     }
 
     const getThisUser = async () => {
-        const response = await fetch(`${props.URL}auth/${props.username.userId}`, {
+        const response = await fetch(`${props.URL}auth/${userId}`, {
             method: 'get'
         })
         const data = await response.json()
-        console.log(data)
         return data
     }
 
@@ -44,12 +46,10 @@ const FollowBar = (props) => {
     // }
 
     const follow = async (id) => {
-        const userId = props.username.userId
         await fetch(`${props.URL}tweet/follow/${userId}/${id}`, {method: 'put'})
     }
 
     const unfollow = async (id) => {
-        const userId = props.username.userId
         await fetch(`${props.URL}tweet/unfollow/${userId}/${id}`, {method: 'put'})
     }
 
@@ -63,8 +63,10 @@ const FollowBar = (props) => {
     // const unfollowedData = notFollowed()
     const allData = userData
 
-
-    if (allData && thisUser) {
+    if (!token){
+        return <h1>Please Log in</h1>
+    }
+    else if (allData && thisUser.follows && thisUser) {
         return <div className='follow-bar'>
         {allData.map((x)=>{
             if (thisUser.follows.includes(x._id)){
@@ -85,7 +87,9 @@ const FollowBar = (props) => {
             </div>
         })}
     </div>
-    } else {
+    } 
+    
+    else {
         return <h1>Loading...</h1>
     }
 }

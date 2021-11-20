@@ -23,6 +23,7 @@ const Login = (props) => {
      const handleSubmit = (event) => {
          event.preventDefault()
          const {username, password} = form
+         console.log(username)
          props.getUsername(username)
 
 

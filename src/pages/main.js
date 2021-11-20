@@ -38,7 +38,7 @@ const Main = (props) => {
     //calls function to load the page
     getComments();
   }, []);
-  console.log(items);
+ 
 
   const fetchComments = async () => {
     const res = await fetch(
@@ -67,22 +67,24 @@ const Main = (props) => {
      return (
        <>
          <Header />
-         <FollowBar URL={props.URL} username={props.username}/>
-         <InfiniteScroll
-           dataLength={items.length} //This is important field to render the next data
-           next={fetchData}
-           hasMore={hasMore}
-           loader={<h4>Loading...</h4>}
-           endMessage={
-             <p style={{ textAlign: "center" }}>
-               <b>Yay! You've seen every Retweet! Time to go outside!</b>
-             </p>
-           }
-         >
-           {items.map((item) => {
-             return <Comment key={item.id} item={item} />;
-           })}
-         </InfiniteScroll>
+         <div className="main-container">
+           <FollowBar URL={props.URL} username={props.username} />
+           <InfiniteScroll
+             dataLength={items.length} //This is important field to render the next data
+             next={fetchData}
+             hasMore={hasMore}
+             loader={<h4>Loading...</h4>}
+             endMessage={
+               <p style={{ textAlign: "center" }}>
+                 <b>Yay! You've seen every Retweet! Time to go outside!</b>
+               </p>
+             }
+           >
+             {items.map((item) => {
+               return <Comment key={item.id} item={item} />;
+             })}
+           </InfiniteScroll>
+         </div>
        </>
      );
    } else {

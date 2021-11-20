@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from 'react'
 import { useNavigate } from "react-router-dom";
 
 
@@ -13,7 +13,7 @@ const Login = (props) => {
     }
 
 
-    const [form, setForm ] = React.useState(blank)
+    const [form, setForm ] = useState(blank)
 
 
     const handleChange = (event) => {
@@ -23,6 +23,7 @@ const Login = (props) => {
      const handleSubmit = (event) => {
          event.preventDefault()
          const {username, password} = form
+         props.getUsername(username)
 
 
          fetch(`${props.URL}auth/login` , {

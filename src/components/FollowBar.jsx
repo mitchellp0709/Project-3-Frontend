@@ -61,22 +61,31 @@ const FollowBar = (props) => {
 
     // const followData = followed()
     // const unfollowedData = notFollowed()
-    const allData = userData
-    if (!token){
-        return <h1>Please Log in</h1>
-    }
-    else if (allData && thisUser.follows && thisUser) {
-        return <div className='follow-bar'>
-              <h2 className="all-users">Users:</h2>
-        {allData.map((x)=>{
-            if (thisUser.follows.includes(x._id)){
-                return <div>
-                <h4 className="all-username">{x.username}</h4>
-                <button classname="all-button" key={x._id} onClick={(event)=>{
-                    event.preventDefault(); 
-                    unfollow(x._id);
-                    event.currentTarget.innerHTML = 'Unfollowed!'}}>Unfollow</button>
-            </div>
+  const allData = userData
+    if (!token) {
+      return <h1>Please Log in</h1>;
+    } else if (allData && thisUser) {
+      return (
+        <div className="follow-bar">
+          <h2 className="all-users">Users:</h2>
+          {allData.map((x) => {
+            if (thisUser.follows.includes(x._id)) {
+              return (
+                <div>
+                  <h4 className="all-username">{x.username}</h4>
+                  <button
+                    className="all-button"
+                    key={x._id}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      unfollow(x._id);
+                      event.currentTarget.innerHTML = "Unfollowed!";
+                    }}
+                  >
+                    Unfollow
+                  </button>
+                </div>
+              );
             }
             return (
               <div>
@@ -87,15 +96,20 @@ const FollowBar = (props) => {
                   onClick={(event) => {
                     event.preventDefault();
                     follow(x._id);
-                    event.currentTarget.innerHTML = 'Followed!'}}>Follow</button>
-            </div>
-        )})}
-    </div>
-    } 
-    
-    else {
-        return <h1>Loading...</h1>
+                    event.currentTarget.innerHTML = "Followed!";
+                  }}
+                >
+                  Follow
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      );
+    } else {
+      return <h1>Loading...</h1>;
     }
+  
 }
 
 export default FollowBar

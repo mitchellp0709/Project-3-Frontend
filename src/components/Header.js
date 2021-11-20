@@ -6,6 +6,7 @@ const Header = (props) => {
 const navigate = useNavigate()
   const logout = (() => {
     localStorage.removeItem("token")
+    localStorage.removeItem("userId");
     navigate("/login")
   })
   

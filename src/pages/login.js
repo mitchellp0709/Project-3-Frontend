@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import { useNavigate } from "react-router-dom";
-
+import FirstHeader from '../components/FirstHeader';
 
 
 const Login = (props) => {
@@ -47,17 +47,32 @@ const Login = (props) => {
         }
 
 
-    return (
-    <div className="form">
-
+  return (<>
+      <FirstHeader/>
+      <div className="form">
+       
         <form onSubmit={handleSubmit} className="form-data">
-            <input className="username" type="text" name="username" value={form.username} placeholder="Username" onChange={handleChange}/>
-            <input className="password" type="password" name="password" value={form.password} placeholder= "Password" onChange={handleChange}/>
+          <input
+            className="username"
+            type="text"
+            name="username"
+            value={form.username}
+            placeholder="Username"
+            onChange={handleChange}
+          />
+          <input
+            className="password"
+            type="password"
+            name="password"
+            value={form.password}
+            placeholder="Password"
+            onChange={handleChange}
+          />
 
-            <input type="submit" value="Login"/>
+          <input type="submit" value="Login" />
         </form>
-    </div>
-    );
+      </div>
+    </>);
 }
 
 export default Login;

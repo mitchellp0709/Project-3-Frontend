@@ -22,9 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <Link to="/">
-        <h1 className="retweet-main">Retweet</h1>
-      </Link>
+      
       <main>
         <Routes>
           <Route exact path="/" element={<Main/>} />
@@ -33,6 +31,7 @@ function App() {
             path="/login"
             element={<Login URL={URL} getToken={getToken} />}
           />
+          <Route path="/user/id" element={<Profile/>}/>
         </Routes>
       </main>
     </div>

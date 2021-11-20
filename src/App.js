@@ -5,7 +5,7 @@ import {Route, Routes, Link,} from 'react-router-dom'
 import {useState} from 'react'
 import "./styles.scss"
 import Main from './pages/main'
-
+import Profile from './pages/profile'
 
 
 function App() {

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import FollowBar from '../components/FollowBar'
 
 // MUST RUN THIS TO HOST THE SERVER ON PORT 3004:
 //json-server --watch db.json --port 3004
@@ -23,7 +24,7 @@ const Main = (props) => {
   //state that changes how many iterations of the infinite scroll have loaded
   const [page, setPage] = useState(2);
 
-  //sets the initial state of the page, in this case it is the first 20 items (based on the url)
+  // sets the initial state of the page, in this case it is the first 20 items (based on the url)
   useEffect(() => {
     //runs a api call to localhost for the items
     const getComments = async () => {
@@ -57,6 +58,7 @@ const Main = (props) => {
     setPage(page + 1);
   };
 
+
   const navigate = useNavigate();
 
  
@@ -65,6 +67,7 @@ const Main = (props) => {
      return (
        <>
          <Header />
+         <FollowBar URL={props.URL} username={props.username}/>
          <InfiniteScroll
            dataLength={items.length} //This is important field to render the next data
            next={fetchData}

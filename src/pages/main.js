@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import FollowBar from '../components/FollowBar'
 import Wall from './wall'
+import FirstHeader from "../components/FirstHeader";
 
 // MUST RUN THIS TO HOST THE SERVER ON PORT 3004:
 //json-server --watch db.json --port 3004
@@ -92,6 +93,7 @@ const Main = (props) => {
    } else {
      return (
        <div className="redirect">
+         <FirstHeader/>
          <h2>Looks like you aren't logged in!</h2>
          <h3>
            Please either <Link to="/login">login </Link> or{" "}

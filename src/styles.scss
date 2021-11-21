@@ -156,6 +156,52 @@ nav > a{
     }
 }
 
+// MAIN PAGE WITH FOLLOWS
+
+.main-container{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.follow-bar{
+  width: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  margin-right: 5px;
+  margin-top: 10px;
+  height: fit-content;
+  padding-bottom: 5px;
+}
+
+.infinite-scroll-component__outerdiv{
+  width: 90%;
+}
+
+.all-button{
+  color: white;
+  border: 3px solid $green;
+  transition: .2s ease-in-out;
+  font-weight: bold;
+  background-color: $twitter;
+}
+
+.all-button:hover{
+  cursor: pointer;
+  color:black;
+  background-color: $green;
+  border: 3px solid $twitter;
+}
+
+
+
+
+
+
+
 
 
 // COPIED FROM STYLES

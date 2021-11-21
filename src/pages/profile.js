@@ -1,11 +1,10 @@
-import Header from "../components/Header"
+import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Comment from "../components/comments";
 import { Link } from "react-router-dom";
 
 const Profile = (props) => {
-
   const [items, setItems] = useState([]);
 
   //state to determine if we have reached the bottom of the feed
@@ -47,8 +46,6 @@ const Profile = (props) => {
 
     setPage(page + 1);
   };
-
-
 
   if (localStorage.token?.length > 50) {
     return (
@@ -97,8 +94,6 @@ const Profile = (props) => {
       </div>
     );
   }
-  
-  
-}
+};
 
-export default Profile
+export default Profile;

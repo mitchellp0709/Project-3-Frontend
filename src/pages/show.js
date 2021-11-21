@@ -61,13 +61,7 @@ const Show = (props) => {
             placeholder=""
             onChange={handleChange}
           />
-          <input
-            type="text"
-            value={editForm.title}
-            name="title"
-            placeholder="title"
-            onChange={handleChange}
-          />
+        
           <input type="submit" value="" />
         </form>
       );

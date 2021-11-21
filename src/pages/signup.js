@@ -9,7 +9,9 @@ const Signup = (props) => {
     
     const blank = {
         username: "",
-        password: "",
+      password: "",
+      profilePicture: "",
+        coverPhoto:"",
     }
 
 
@@ -43,18 +45,48 @@ const Signup = (props) => {
         }
 
 
-  return (<>
-      <FirstHeader/>
-    <div className="form">
-
+  return (
+    <>
+      <FirstHeader />
+      <div className="form">
         <form onSubmit={handleSubmit} className="form-data">
-            <input className="username" type="text" name="username" value={form.username} placeholder= "Username" onChange={handleChange}/>
-            <input className="password" type="password" name="password" value={form.password} placeholder="Password" onChange={handleChange}/>
-
-            <input type="submit" value="Signup"/>
+          <input
+            className="username"
+            type="text"
+            name="username"
+            value={form.username}
+            placeholder="Username"
+            onChange={handleChange}
+          />
+          <input
+            className="password"
+            type="password"
+            name="password"
+            value={form.password}
+            placeholder="Password"
+            onChange={handleChange}
+          />
+          <input
+            className="form-prof-pic"
+            type="text"
+            name="profilePicture"
+            value={form.profilePicture}
+            placeholder="Link to Profile Picture"
+            onChange={handleChange}
+          />
+          <input
+            className="form-cover-pic"
+            type="text"
+            name="coverPhoto"
+            value={form.profilePicture}
+            placeholder="Link to Cover Photo"
+            onChange={handleChange}
+          />
+          <input type="submit" value="Signup" />
         </form>
-    </div>
-    </>);
+      </div>
+    </>
+  );
 }
 
 export default Signup;

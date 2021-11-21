@@ -40,7 +40,6 @@ const Login = (props) => {
             props.getToken(data)
              setForm(blank)
              navigate("/")
-            
          })
          
 

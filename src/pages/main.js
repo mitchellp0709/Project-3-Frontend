@@ -67,7 +67,7 @@ const Main = (props) => {
      return (
        <>
          <Header />
-         <FollowBar URL={props.URL} username={props.username}/>
+         {/* <FollowBar URL={props.URL} username={props.username}/> */}
          <InfiniteScroll
            dataLength={items.length} //This is important field to render the next data
            next={fetchData}

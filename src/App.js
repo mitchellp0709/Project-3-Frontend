@@ -53,7 +53,7 @@ const getUsername = async (param) => {
             path="/login"
             element={<Login URL={URL} getToken={getToken} getUsername={getUsername}/>}
           />
-          <Route path="/user/id" element={<Profile/>}/>
+          <Route path="/user/:id" element={<Profile/>}/>
         </Routes>
       </main>
     </div>

@@ -71,7 +71,7 @@ const Main = (props) => {
          <Header />
          <div className="main-container">
            <FollowBar URL={props.URL} username={props.username} />
-           <Wall URL={props.URL}/>
+           <Wall URL={props.URL} />
            {/* <InfiniteScroll
              dataLength={items.length} //This is important field to render the next data
              next={fetchData}

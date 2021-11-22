@@ -1,60 +1,93 @@
 import { useParams, useNavigate } from "react-router-dom";
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react"
+import Header from "../components/Header";
+
 
 const Show = (props) => {
-
+  // grab the navigate function
   const navigate = useNavigate()
-  
+  // get the params object
   const params = useParams();
- 
+  // grab the id from params
   const id = params.id;
-  
+  // grab people from props
   const tweets = props.tweets;
- 
+  // create state for form
   const [editForm, setEditForm] = useState({})
- 
-  useEffect(() => {
-      if(props.tweets){
-          const Tweet = tweets.find((t) => t._id === id);
-          setEditForm(oneCheese)
-      }
-  }, [props.tweets])
-
-  if (props.tweets) {
   
-    const oneTweet = tweets.find((t) => t._id === id);
-    
 
+  const url = props.URL 
+
+const getTweet = async () => {
+  const response = await fetch (`${url}tweet/oneTweet/${id}`)
+  const data = await response.json()
+  setEditForm(data)
+}
+
+const updateTweets = async (tweet) => {
+  await fetch(url + "tweet/" + tweet._id, {
+    method: "put",
+    headers: {
+      //MUST INCLUDE THIS. Turns it into json data
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(tweet),
+  })
+}
+  
+  useEffect(() => {
+    getTweet()
+  }, [])
+
+  if (editForm._id) {
+    
+   
+    
+    // handleChange function for form
     const handleChange = (event) => {
-        // create a copy of the state
+       
         const newState = {...editForm}
-        // update the newState
         newState[event.target.name] = event.target.value
-        // update the state
         setEditForm(newState)
     }
 
-      // handleSubmit for form
-      const handleSubmit = (event) => {
-        // prevent the refresh
+     // handleSubmit for form
+     const handleSubmit = (event) => {
+       
         event.preventDefault()
-        // pass the form data to updateCheese
-        props.updateCheese(editForm, Tweet._id)
-   
+        updateTweets(editForm, editForm._id)
         navigate("/")
     }
-   
 
- 
+    
 
-    return (
-      <div className="tweet">
+    const form = (
+        <form onSubmit={handleSubmit}>
+          
+          <input
+            type="text"
+            value={editForm.content}
+            name="content"
+            placeholder={editForm.content}
+          onChange={handleChange}
+          className="edit-tweet-form"
+          />
         
+          <input type="submit" value="Confirm" />
+        </form>
+      );
+
+    return (<>
+      <Header />
+      <h1 className="edit-title" style={{textAlign:"center"}}>Edit Retweet</h1>
+     <div className="tweet">
+      {form}
       </div>
-    );
-  } else {
-    return <h1>Show page</h1>;
-  }
-};
+      </>
+   );
+}else {
+  return <h1>Loading...</h1>
+}
+}
 
 export default Show;

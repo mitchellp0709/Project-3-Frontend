@@ -1,9 +1,12 @@
-$maincolor: rgb(178,155,199);
-$twitter: rgb(29,155,240);
-$lightpink: rgb(241,113,160);
-$darkpink: rgb(230,66,152);
-$green: rgb(161,194,209);
-$white: rgb(241,235,245);
+$white: rgb(255,255,255);
+$orange: rgb(255,165,106);
+$offwhite: rgb(255, 239, 215);
+$maincolor: rgb(255,255,255);
+$twitter: rgb(110, 197, 255);
+$formcolor: rgb(255, 165, 106);
+$tweetcolor: $offwhite;
+$header: rgb(255, 165, 106);
+
 
 
 @mixin retweet-logo{
@@ -16,7 +19,7 @@ $white: rgb(241,235,245);
   margin-left: auto;
   margin-right: auto;
   height: 60vh;
-  background-color: $lightpink;
+  background-color: $formcolor;
   border-radius: 25px;
  
   
@@ -29,6 +32,7 @@ $white: rgb(241,235,245);
   background-color: $twitter;
   color:white;
   border-radius: 25px;
+  margin: 10px;
 }
 
 
@@ -58,8 +62,25 @@ a{
   margin-top: 30px;
 }
 
+.tweet-form{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: flex-end;
+  padding: 25px;
+}
+
 input{
   @include input-data;
+}
+
+input[type='text']{
+  width: 40vw;
+  height: 5em;
+}
+
+input[type='submit']{
+  height: 3em;
 }
 
 .form-data{
@@ -110,7 +131,7 @@ input[type=submit]{
   background-color: $twitter;
   color: white;
   font-size: 1.6em;
-  border: 3px solid $green;
+  border: 3px solid $header;
   transition: .2s ease-in-out;
   font-weight: bold;
   grid-area: s;
@@ -118,7 +139,7 @@ input[type=submit]{
 input[type=submit]:hover{
   cursor: pointer;
   color:black;
-  background-color: $green;
+  background-color: $header;
   border: 3px solid $twitter;
 }
 
@@ -131,7 +152,7 @@ nav{
 display: grid;
 grid-template-areas:
 " s t . . . p . . . . l .";
-background-color: $green;
+background-color: $header;
 }
 
 
@@ -159,7 +180,7 @@ align-self: center;
 }
 nav > a{
   text-decoration: none;
-  color: $darkpink;
+  color: $tweetcolor;
 }
 
 // LOGIN/SIGN UP NAV STYLING
@@ -184,7 +205,7 @@ nav > a{
 }
 
 .follow-bar{
-  width: 12%;
+  width: 12vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,29 +214,31 @@ nav > a{
   margin-top: 10px;
   height: fit-content;
   padding-bottom: 5px;
+  background-color: $orange;
+  border-radius: 25px;
 }
 
+.this-user{
+  text-align: center;
+}
 
 .all-button{
   color: white;
-  border: 3px solid $green;
+  border: 3px solid $header;
   transition: .2s ease-in-out;
   font-weight: bold;
   background-color: $twitter;
+  text-align: center;
 }
 
 .all-button:hover{
   cursor: pointer;
   color:black;
-  background-color: $green;
+  background-color: $header;
   border: 3px solid $twitter;
 }
 
 .main-form-input {
-  width: 75%;
-   padding: 10px;
-   margin-top: 30px;
-   margin-bottom: 5px;
    margin-left: 20px;
    margin-right:5px
 }
@@ -234,7 +257,7 @@ nav > a{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $darkpink;
+  background-color: $tweetcolor;
   align-content: center;
   margin: 5px;
   border: 2px solid $twitter;
@@ -281,6 +304,9 @@ body{
 
 .tweet{
   margin:5px;
+  border-radius: 25px;
+  max-width: 75%;
+  min-width: 75%;
 }
 
 .respond{
@@ -307,7 +333,7 @@ b{
 
 nav > a{
 text-decoration: none;
-color: $darkpink;
+color: $tweetcolor;
 font-weight: bolder;
 }
 
@@ -363,15 +389,18 @@ font-weight: bolder;
 
 .tweet-container{
   margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .tweet{
   border: 2px solid black;
-  background-color: $darkpink;
+  background-color: $tweetcolor;
   margin-left:20px;
 }
 
 .tweet-username{
-  color: white;
+  color: black;
   padding-left: 10px;
   width: fit-content;
 }
@@ -400,7 +429,7 @@ font-weight: bolder;
   align-items: center;
   justify-content: center;
   width: 80%;
-  background-color: $darkpink;
+  background-color: $tweetcolor;
   height: 60vh;
     input{
       width:80%;

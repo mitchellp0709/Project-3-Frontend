@@ -44,11 +44,11 @@ const handleSubmit = (event) => {
     username: localStorage.username,
     content: "",
   });
-  window.location.reload(true);
+  // window.location.reload(true);
 };
 
 const form = (
-  <form onSubmit={handleSubmit}>
+  <form className='tweet-form' onSubmit={handleSubmit}>
     <input
       style={{ display: "none" }}
       type="text"
@@ -163,10 +163,10 @@ const form = (
                         src="/delete.png"
                         alt="delete tweet"
                         onClick={async () => {
-                          await fetch(props.URL + tweet._id, {
+                          await fetch(`${props.URL}tweet/${tweet._id}`, {
                             method: "delete",
                           });
-                          window.location.reload(true);
+                          // window.location.reload(true);
                         }}
                       />
                     </>

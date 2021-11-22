@@ -47,7 +47,7 @@ const createTweet = async (tweet) => {
   }
 
   const form = (
-    <form onSubmit={handleSubmit}>
+    <form className='tweet-form' onSubmit={handleSubmit}>
       <input
         style={{ display: "none" }}
         type="text"

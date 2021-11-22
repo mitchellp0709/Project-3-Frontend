@@ -71,7 +71,7 @@ const FollowBar = (props) => {
           {allData.map((x) => {
             if (thisUser.follows.includes(x._id)) {
               return (
-                <div>
+                <div className='this-user'>
                   <h4 className="all-username">{x.username}</h4>
                   <button
                     className="all-button"

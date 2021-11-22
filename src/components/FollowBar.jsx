@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 
 const FollowBar = (props) => {
 
@@ -71,8 +72,10 @@ const FollowBar = (props) => {
           {allData.map((x) => {
             if (thisUser.follows.includes(x._id)) {
               return (
-                <div className='this-user'>
-                  <h4 className="all-username">{x.username}</h4>
+                <div className="this-user">
+                  <Link to={`/user/${x.username}`}>
+                    <h4 className="all-username">{x.username}</h4>
+                  </Link>
                   <button
                     className="all-button"
                     key={x._id}
@@ -89,7 +92,9 @@ const FollowBar = (props) => {
             }
             return (
               <div>
-                <h4>{x.username}</h4>
+                <Link to={`/user/${x.username}`}>
+                  <h4>{x.username}</h4>
+                </Link>
                 <button
                   className="all-button"
                   key={x._id}

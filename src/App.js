@@ -7,6 +7,7 @@ import "./styles.scss"
 import Main from './pages/main'
 import Profile from './pages/profile'
 import Show from "./pages/show"
+import EditProfile from './pages/EditProfile'
 
 
 function App() {
@@ -70,7 +71,8 @@ const createTweet = async (tweet) => {
             element={<Login URL={URL} getToken={getToken} getUsername={getUsername}/>}
           />
           <Route path="/user/:id" element={<Profile URL={URL}/>} />
-          <Route path="/tweet/:id/edit" element={<Show URL={URL}/>}/>
+          <Route path="/tweet/:id/edit" element={<Show URL={URL} />} />
+          <Route path="/user/:id/edit" element={<EditProfile URL={URL}/>}/>
         </Routes>
       </main>
     </div>

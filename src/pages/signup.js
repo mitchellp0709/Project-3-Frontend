@@ -10,8 +10,8 @@ const Signup = (props) => {
     const blank = {
         username: "",
       password: "",
-      profilePicture: "",
-        coverPhoto:"",
+      profilePic: "",
+        coverPic:"",
     }
 
 
@@ -24,7 +24,7 @@ const Signup = (props) => {
 
      const handleSubmit = (event) => {
          event.preventDefault()
-         const {username, password} = form
+         const {username, password, profilePic, coverPic} = form
 
 
          fetch(`${props.URL}auth/signup` , {
@@ -32,7 +32,7 @@ const Signup = (props) => {
              headers: {
                  "Content-Type": "application/json"
              },
-             body: JSON.stringify({username, password})
+             body: JSON.stringify({username, password, profilePic, coverPic})
          })
          .then(response => response.json())
          .then(data => {
@@ -69,16 +69,16 @@ const Signup = (props) => {
           <input
             className="form-prof-pic"
             type="text"
-            name="profilePicture"
-            value={form.profilePicture}
+            name="profilePic"
+            value={form.profilePic}
             placeholder="Link to Profile Picture"
             onChange={handleChange}
           />
           <input
             className="form-cover-pic"
             type="text"
-            name="coverPhoto"
-            value={form.coverPhoto}
+            name="coverPic"
+            value={form.coverPic}
             placeholder="Link to Cover Photo"
             onChange={handleChange}
           />

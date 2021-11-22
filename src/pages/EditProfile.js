@@ -77,9 +77,14 @@ const EditProfile = (props) => {
 
 
 
+if(username!==params.id){
+  return<>
+  <Header/>
+   <h1>Nice try! This isn't yourpage to edit!</h1>
+   </>
+} else
 
-
-  if (editForm) {
+if (editForm) {
     return (
       <>
         <Header />

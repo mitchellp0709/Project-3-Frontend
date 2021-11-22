@@ -2,6 +2,8 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link, useParams } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
+import { AiFillEdit } from "react-icons/ai";
 
 
 const Profile = (props) => {
@@ -134,17 +136,15 @@ const form = (
                   {tweet.username === localStorage.username ? (
                     <>
                       <Link to={`/tweet/${tweet._id}/edit`}>
-                        <img src="/edit.png" alt="edit tweet" />
+                        <AiFillEdit/>
                       </Link>
-                      <img
-                        src="/delete.png"
-                        alt="delete tweet"
+                      <FaTrashAlt
                         className="delete"
                         onClick={async () => {
                           await fetch(`${props.URL}tweet/${tweet._id}`, {
                             method: "delete",
                           });
-                          getTweets()
+                          getTweets();
                         }}
                       />
                     </>

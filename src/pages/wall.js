@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import FollowBar from "../components/FollowBar";
 
 const Wall = (props) => {
   const token = localStorage.getItem("token");
@@ -48,7 +49,7 @@ const createTweet = async (tweet) => {
   const form = (
     <form onSubmit={handleSubmit}>
       <input
-        style={{display: "none"}}
+        style={{ display: "none" }}
         type="text"
         value={newForm.username}
         name="username"
@@ -61,8 +62,9 @@ const createTweet = async (tweet) => {
         name="content"
         placeholder="Tell everyone what's on your mind!"
         onChange={handleChange}
+        className="main-form-input"
       />
-      <input type="submit" value="Send Retweet!" />
+      <input type="submit" value="Send Retweet!" className="new-tweet-button"/>
     </form>
   );
 
@@ -104,45 +106,50 @@ const createTweet = async (tweet) => {
   } else if (!tweets.data) {
     return <h1>Loading Tweets...</h1>;
   } else {
-    return (<>
-      {form}
-      <div className="tweet-container">
-        {tweets.data.map((x) => {
-          if (x.length) {
-            return x.map((y) => {
-              return (
-                <div className="tweet">
-                  <Link to={`/user/${y.username}`}>
-                    <h2 className="tweet-username">${y.username}</h2>
-                  </Link>
+    return (
+      <>
+        <div className="main-form">{form}</div>
+        <div className="main-container">
+          <FollowBar URL={props.URL} username={props.username} />
+          <div className="tweet-container">
+            {tweets.data.map((x) => {
+              if (x.length) {
+                return x.map((y) => {
+                  return (
+                    <div className="tweet">
+                      <Link to={`/user/${y.username}`}>
+                        <h2 className="tweet-username">${y.username}</h2>
+                      </Link>
 
-                  <p className="tweet-content">{y.content}</p>
-                  <div className="tweet-symbols">
-                    {y.username === localStorage.username ? (
-                      <>
-                        <Link to={`/tweet/${y._id}/edit`}>
-                          <img src="/edit.png" alt="edit tweet" />
-                        </Link>
-                        <img
-                          src="/delete.png"
-                          alt="delete tweet"
-                          onClick={async () => {
-                            await fetch(url + y._id, {
-                              method: "delete",
-                            });
-                            window.location.reload(true);
-                          }}
-                        />
-                      </>
-                    ) : null}
-                  </div>
-                </div>
-              );
-            });
-          }
-        })}
-      </div>
-    </>);
+                      <p className="tweet-content">{y.content}</p>
+                      <div className="tweet-symbols">
+                        {y.username === localStorage.username ? (
+                          <>
+                            <Link to={`/tweet/${y._id}/edit`}>
+                              <img src="/edit.png" alt="edit tweet" />
+                            </Link>
+                            <img
+                              src="/delete.png"
+                              alt="delete tweet"
+                              onClick={async () => {
+                                await fetch(url + y._id, {
+                                  method: "delete",
+                                });
+                                window.location.reload(true);
+                              }}
+                            />
+                          </>
+                        ) : null}
+                      </div>
+                    </div>
+                  );
+                });
+              }
+            })}
+          </div>
+        </div>
+      </>
+    );
   }
 };
 

@@ -78,7 +78,7 @@ const Signup = (props) => {
             className="form-cover-pic"
             type="text"
             name="coverPhoto"
-            value={form.profilePicture}
+            value={form.coverPhoto}
             placeholder="Link to Cover Photo"
             onChange={handleChange}
           />

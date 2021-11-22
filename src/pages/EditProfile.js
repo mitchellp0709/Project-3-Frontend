@@ -45,7 +45,7 @@ const EditProfile = (props) => {
 
 
   const form = (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="edit-form">
       <input
         type="text"
         value={editForm.profilePic}
@@ -80,13 +80,16 @@ const EditProfile = (props) => {
 
 
   if (editForm) {
-    return <>
-      <Header/>
-      <h1>Edit Profile</h1>
-      {form}
-      
-    
-    </>
+    return (
+      <>
+        <Header />
+        <div className="edit-all">
+          <h1>Edit Profile</h1>
+          {/* <div className="edit-form">{form}</div> */}
+          {form}
+        </div>
+      </>
+    );
   } else {
     return <h1>Loading...</h1>
   }

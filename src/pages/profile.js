@@ -72,23 +72,6 @@ const form = (
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
 //gets the users profile and sets the cover photo and profile picture
   const getProfile = async() => {
@@ -99,7 +82,7 @@ const form = (
     
   }
  //calls getProfile on loadint
-  useEffect(() => { getProfile() }, [])
+  useEffect(() => { getProfile() }, [profPic,coverPic])
 
   //if a user hasn't set a profile picture or cover photo, this sets a default
   if (profPic === undefined) {
@@ -112,11 +95,6 @@ const form = (
        "https://i.pinimg.com/474x/50/b1/a8/50b1a89e3201d7adec2cb16f0660b2fe--photo-ideas.jpg"
      );
    }
-
-  
-  
-  
-  
  
   const getTweets = async () => {
     const response = await fetch(`${props.URL}tweet/oneUser/${username}`)

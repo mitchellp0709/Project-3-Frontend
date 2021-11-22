@@ -33,7 +33,7 @@ const EditProfile = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     updateUser(editForm)
-    navigate(`/user/${localStorage.username}`)
+    navigate (`/user/${localStorage.username}`)
   }
 
 
@@ -94,15 +94,7 @@ const EditProfile = (props) => {
     return <h1>Loading...</h1>
   }
 
-
-
-
-
-
-
     return <>
-      
-    <h1>hello</h1>
     </>;
 
 }

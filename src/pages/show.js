@@ -1,79 +1,88 @@
 import { useParams, useNavigate } from "react-router-dom";
-// import {useState, useEffect} from "react"
-
-// const Show = (props) => {
-
-//   const navigate = useNavigate()
-  
-//   const params = useParams();
- 
-//   const id = params.id;
-  
-//   const tweets = props.tweets;
- 
-//   const [editForm, setEditForm] = useState({})
- 
-//   useEffect(() => {
-//       if(props.tweets){
-//           const Tweet = tweets.find((t) => t._id === id);
-//           setEditForm(oneCheese)
-//       }
-//   }, [props.tweets])
-
-//   if (props.tweets) {
-  
-//     const oneTweet = tweets.find((t) => t._id === id);
-    
-
-//     const handleChange = (event) => {
-//         // create a copy of the state
-//         const newState = {...editForm}
-//         // update the newState
-//         newState[event.target.name] = event.target.value
-//         // update the state
-//         setEditForm(newState)
-//     }
-
-//       // handleSubmit for form
-//       const handleSubmit = (event) => {
-//         // prevent the refresh
-//         event.preventDefault()
-//         // pass the form data to updateCheese
-//         props.updateCheese(editForm, Tweet._id)
-   
-//         navigate("/")
-//     }
-   
-
- 
-
-//     return (
-//       <div className="tweet">
-        
-//       </div>
-//     );
-//   } else {
-//     return <h1>Show page</h1>;
-//   }
-// };
-
-// export default Show;
-
+import {useState, useEffect} from "react"
 
 
 const Show = (props) => {
+  // grab the navigate function
+  const navigate = useNavigate()
+  // get the params object
   const params = useParams();
+  // grab the id from params
   const id = params.id;
-  console.log(id)
-
-  const getTweet = async()=> {
-    const response = await fetch(props.url + id)
-    const data = await response.json()
-    return data
-  }
+  // grab people from props
+  const tweets = props.tweets;
+  // create state for form
+  const [editForm, setEditForm] = useState({})
   
 
-  return <div>show </div>;
+  const url = props.URL 
+
+const getTweet = async () => {
+  const response = await fetch (`${url}tweet/oneTweet/${id}`)
+  const data = await response.json()
+  setEditForm(data)
 }
 
-export default Show
+const updateTweets = async (tweet) => {
+  await fetch(url + "tweet/" + tweet._id, {
+    method: "put",
+    headers: {
+      //MUST INCLUDE THIS. Turns it into json data
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(tweet),
+  })
+}
+  
+  useEffect(() => {
+    getTweet()
+  }, [])
+
+  if (editForm._id) {
+    
+   
+    
+    // handleChange function for form
+    const handleChange = (event) => {
+       
+        const newState = {...editForm}
+        newState[event.target.name] = event.target.value
+        setEditForm(newState)
+    }
+
+     // handleSubmit for form
+     const handleSubmit = (event) => {
+       
+        event.preventDefault()
+        updateTweets(editForm, editForm._id)
+        navigate("/")
+    }
+
+    
+
+    const form = (
+        <form onSubmit={handleSubmit}>
+          
+          <input
+            type="text"
+            value={editForm.content}
+            name="content"
+            placeholder={editForm.content}
+            onChange={handleChange}
+          />
+        
+          <input type="submit" value="Confirm" />
+        </form>
+      );
+
+   return (
+     <div className="tweet">
+      {form}
+     </div>
+   );
+}else {
+  return <h1>Loading...</h1>
+}
+}
+
+export default Show;

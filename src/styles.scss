@@ -308,12 +308,12 @@ font-weight: bolder;
 
 .cover-photo{
   margin-top:0;
-  background-image: url("https://www.teahub.io/photos/full/51-513680_facebook-cover-wallpaper.jpg");
+  // background-image: url("https://www.teahub.io/photos/full/51-513680_facebook-cover-wallpaper.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 40%;
+  height: 50vh;
   display: grid;
   grid-template-areas:
   ". . . . . . . . . . . . . ."

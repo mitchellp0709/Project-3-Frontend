@@ -70,7 +70,12 @@ input{
   ". u u u ."
   ". . . . ."
   ". p p p ."
+ 
   ". . . . ."
+  ". pr pr pr ."
+   ". . . . ."
+   ". c c c ."
+    ". . . . ."
   ". s s s ."
   ". . . . .";
   height: 100%;
@@ -84,9 +89,20 @@ input{
   grid-area:p;
   font-size: 1.5em;
 }
+.form-prof-pic{
+font-size: 1.5em;
+grid-area: pr;
+}
+
+.form-cover-pic{
+font-size: 1.5em;
+grid-area: c;
+}
+
 ::placeholder{
   color:rgb(99, 90, 90);
 }
+
 
 
 
@@ -158,6 +174,8 @@ nav > a{
 
 // MAIN PAGE WITH FOLLOWS
 
+
+
 .main-container{
   display: flex;
   flex-direction: row-reverse;
@@ -177,9 +195,6 @@ nav > a{
   padding-bottom: 5px;
 }
 
-.infinite-scroll-component__outerdiv{
-  width: 90%;
-}
 
 .all-button{
   color: white;
@@ -196,7 +211,14 @@ nav > a{
   border: 3px solid $twitter;
 }
 
-
+.main-form-input {
+  width: 75%;
+   padding: 10px;
+   margin-top: 30px;
+   margin-bottom: 5px;
+   margin-left: 20px;
+   margin-right:5px
+}
 
 
 
@@ -344,16 +366,18 @@ font-weight: bolder;
 }
 .tweet{
   border: 2px solid black;
-
+  background-color: $darkpink;
+  margin-left:20px;
 }
 
 .tweet-username{
   color: white;
   padding-left: 10px;
+  width: fit-content;
 }
 
 .tweet-content{
-  color: red;
+  color: black;
   padding-left: 10px;
 }
 
@@ -361,4 +385,33 @@ font-weight: bolder;
   display: flex;
   justify-content: space-around;
 
+}
+.tweet > a {
+  width:fit-content
+}
+
+
+
+// EDIT PROFILE
+
+.edit-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  background-color: $darkpink;
+  height: 60vh;
+    input{
+      width:80%;
+      margin-top: 20px;
+      padding: 10px;
+    }
+}
+
+.edit-all{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }

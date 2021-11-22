@@ -137,7 +137,7 @@ const createTweet = async (tweet) => {
                                 await fetch(url + y._id, {
                                   method: "delete",
                                 });
-                                //window.location.reload(true);
+                                handleLoad()
                               }}
                             />
                           </>

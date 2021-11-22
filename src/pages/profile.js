@@ -166,7 +166,7 @@ const form = (
                           await fetch(`${props.URL}tweet/${tweet._id}`, {
                             method: "delete",
                           });
-                          //window.location.reload(true);
+                          getTweets()
                         }}
                       />
                     </>

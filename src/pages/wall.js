@@ -20,7 +20,7 @@ const createTweet = async (tweet) => {
 
     body: JSON.stringify(tweet),
   });
-  getTweets()
+  handleLoad()
 };
   
 
@@ -43,7 +43,7 @@ const createTweet = async (tweet) => {
       username: localStorage.username,
       content: "",
     });
-    window.location.reload(true);
+    
   }
 
   const form = (
@@ -130,12 +130,14 @@ const createTweet = async (tweet) => {
                             </Link>
                             <img
                               src="/delete.png"
+                              className="delete"
                               alt="delete tweet"
+                              className="delete"
                               onClick={async () => {
                                 await fetch(url + y._id, {
                                   method: "delete",
                                 });
-                                window.location.reload(true);
+                                //window.location.reload(true);
                               }}
                             />
                           </>

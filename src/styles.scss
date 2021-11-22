@@ -76,7 +76,7 @@ input{
 
 input[type='text']{
   width: 40vw;
-  height: 5em;
+  height: 3em;
 }
 
 input[type='submit']{
@@ -124,6 +124,10 @@ grid-area: c;
   color:rgb(99, 90, 90);
 }
 
+input[type=password] {
+width: 40vw;
+height: 3em;
+}
 
 
 

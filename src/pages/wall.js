@@ -120,7 +120,7 @@ const createTweet = async (tweet) => {
                   <div className="tweet-symbols">
                     {y.username === localStorage.username ? (
                       <>
-                        <Link to={`/tweet/:${y._id}/edit`}>
+                        <Link to={`/tweet/${y._id}/edit`}>
                           <img src="/edit.png" alt="edit tweet" />
                         </Link>
                         <img

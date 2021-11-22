@@ -335,3 +335,30 @@ font-weight: bolder;
   grid-area: un;
   color: white;
 }
+
+
+// TWEET STYLES
+
+.tweet-container{
+  margin-top: 5px;
+}
+.tweet{
+  border: 2px solid black;
+
+}
+
+.tweet-username{
+  color: white;
+  padding-left: 10px;
+}
+
+.tweet-content{
+  color: red;
+  padding-left: 10px;
+}
+
+.tweet-symbols{
+  display: flex;
+  justify-content: space-around;
+
+}

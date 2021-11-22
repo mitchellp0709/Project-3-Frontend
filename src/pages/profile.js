@@ -48,7 +48,7 @@ const handleSubmit = (event) => {
 };
 
 const form = (
-  <form onSubmit={handleSubmit}>
+  <form className='tweet-form' onSubmit={handleSubmit}>
     <input
       style={{ display: "none" }}
       type="text"

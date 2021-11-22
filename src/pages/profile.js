@@ -62,14 +62,13 @@ const Profile = (props) => {
 //   useEffect(() => {getTweets()},[])
   
   
-  //COME BACK TO THIS
+ 
   const getTweets = async () => {
     const response = await fetch(`${props.URL}tweet/oneUser/${username}`)
     const data = await response.json()
     const newState = { ...tweets }
     newState.data = await data
     setTweets(newState.data)
-     console.log(await tweets)
   }
   
   useEffect(() => {getTweets()},[])

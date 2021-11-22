@@ -6,12 +6,12 @@ const Wall = (props) => {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const [tweets, setTweets] = useState({});
-  const url = "https://group-3-project-3.herokuapp.com/tweet/"
+  const url = "https://group-3-project-3.herokuapp.com/tweet/";
   const navigate = useNavigate()
 
 
 const createTweet = async (tweet) => {
-  await fetch(url, {
+  await fetch("https://group-3-project-3.herokuapp.com/tweet/", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
@@ -112,22 +112,15 @@ const createTweet = async (tweet) => {
             return x.map((y) => {
               return (
                 <div className="tweet">
-                  
-                    <h2 className="tweet-username" onClick={(event) => {
-                      <Link to={`/user/${event.currentTarget.innerHTML}`} />;
-                    }}>${y.username}</h2>
-                  
+                  <Link to={`/user/${y.username}`}>
+                    <h2 className="tweet-username">${y.username}</h2>
+                  </Link>
 
                   <p className="tweet-content">{y.content}</p>
                   <div className="tweet-symbols">
                     {y.username === localStorage.username ? (
                       <>
-                        <Link to={{
-                          pathname: `/tweet/:${y._id}/edit`,
-                          editProps: {
-                            allData: y
-                          }
-                        }} >
+                        <Link to={`/tweet/:${y._id}/edit`}>
                           <img src="/edit.png" alt="edit tweet" />
                         </Link>
                         <img

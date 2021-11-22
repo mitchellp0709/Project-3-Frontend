@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import {useState, useEffect} from "react"
 
+
 const Show = (props) => {
   // grab the navigate function
   const navigate = useNavigate()
@@ -21,17 +22,25 @@ const getTweet = async () => {
   const data = await response.json()
   setEditForm(data)
 }
+
+const updateTweets = async (tweet) => {
+  await fetch(url + "tweet/" + tweet._id, {
+    method: "put",
+    headers: {
+      //MUST INCLUDE THIS. Turns it into json data
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(tweet),
+  })
+}
   
   useEffect(() => {
-      if(props.tweets){
-          const tweet = tweets.find((t) => t._id === id);
-          setEditForm(tweet)
-      }
-  }, [props.tweets])
+    getTweet()
+  }, [])
 
-  if (props.tweets) {
+  if (editForm._id) {
     
-    const tweet = tweets.find((t) => t._id === id);
+   
     
     // handleChange function for form
     const handleChange = (event) => {
@@ -45,7 +54,7 @@ const getTweet = async () => {
      const handleSubmit = (event) => {
        
         event.preventDefault()
-        props.updateTweets(editForm, tweet._id)
+        updateTweets(editForm, editForm._id)
         navigate("/")
     }
 
@@ -71,7 +80,9 @@ const getTweet = async () => {
       {form}
      </div>
    );
-    }
-  }
+}else {
+  return <h1>Loading...</h1>
+}
+}
 
 export default Show;

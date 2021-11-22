@@ -11,6 +11,84 @@ const Profile = (props) => {
   const [coverPic, setCoverPic] = useState(null);
   const [userId, setUserId] = useState(null)
   const [tweets, setTweets] = useState({});
+
+
+const createTweet = async (tweet) => {
+  await fetch("https://group-3-project-3.herokuapp.com/tweet/", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify(tweet),
+  });
+  getTweets();
+};
+
+//MAKING A FORM FOR NEW TWEETS
+const [newForm, setNewForm] = useState({
+  username: localStorage.username,
+  content: "",
+});
+
+const handleChange = (event) => {
+  const newState = { ...newForm };
+  newState[event.target.name] = event.target.value;
+  setNewForm(newState);
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  createTweet(newForm);
+  setNewForm({
+    username: localStorage.username,
+    content: "",
+  });
+  window.location.reload(true);
+};
+
+const form = (
+  <form onSubmit={handleSubmit}>
+    <input
+      style={{ display: "none" }}
+      type="text"
+      value={newForm.username}
+      name="username"
+      placeholder={userId}
+      onChange={handleChange}
+    />
+    <input
+      type="text"
+      value={newForm.content}
+      name="content"
+      placeholder="Tell everyone what's on your mind!"
+      onChange={handleChange}
+      className="main-form-input"
+    />
+    <input type="submit" value="Send Retweet!" className="new-tweet-button" />
+  </form>
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 //gets the users profile and sets the cover photo and profile picture
   const getProfile = async() => {
@@ -36,30 +114,7 @@ const Profile = (props) => {
    }
 
   
-  //fetches the user id based on their username
-  // const getUserId = async () => {
-  //   const response = await fetch(`${props.URL}auth`, {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json",
-  //     },
-  //   });
-  //   const data = await response.json()
-  //   const target = data.find((q) => q.username === username);
-  //   setUserId(target._id)
-  //   console.log(userId)
-  // }
   
-  
-
-//   const getTweets = async () => {
-//     const response = await fetch(`${props.URL}tweet/oneuser/${username}`);
-//     const data = await response.json()
-//     setTweets(data.tweets);
-//     console.log(tweets)
-//  }
-  
-//   useEffect(() => {getTweets()},[])
   
   
  
@@ -90,8 +145,11 @@ const Profile = (props) => {
         </div>
         <div className="profile-tweets">
           <div className="tweet-container">
+            {tweets.user[0].username === localStorage.username ?  form  : null}
+            
           {tweets.tweets.map((tweet) => {
             return (
+              
               <div className="tweet">
                 <h2 className="tweet-classname">${tweet.username}</h2>
                 <p>{tweet.content}</p>

@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react"
+import Header from "../components/Header";
 
 
 const Show = (props) => {
@@ -68,17 +69,21 @@ const updateTweets = async (tweet) => {
             value={editForm.content}
             name="content"
             placeholder={editForm.content}
-            onChange={handleChange}
+          onChange={handleChange}
+          className="edit-tweet-form"
           />
         
           <input type="submit" value="Confirm" />
         </form>
       );
 
-   return (
+    return (<>
+      <Header />
+      <h1 className="edit-title" style={{textAlign:"center"}}>Edit Retweet</h1>
      <div className="tweet">
       {form}
-     </div>
+      </div>
+      </>
    );
 }else {
   return <h1>Loading...</h1>

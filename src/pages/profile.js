@@ -44,7 +44,7 @@ const handleSubmit = (event) => {
     username: localStorage.username,
     content: "",
   });
-  // window.location.reload(true);
+  getTweets()
 };
 
 const form = (
@@ -149,7 +149,6 @@ const form = (
             
           {tweets.tweets.map((tweet) => {
             return (
-              
               <div className="tweet">
                 <h2 className="tweet-classname">${tweet.username}</h2>
                 <p>{tweet.content}</p>
@@ -162,11 +161,12 @@ const form = (
                       <img
                         src="/delete.png"
                         alt="delete tweet"
+                        className="delete"
                         onClick={async () => {
                           await fetch(`${props.URL}tweet/${tweet._id}`, {
                             method: "delete",
                           });
-                          // window.location.reload(true);
+                          getTweets()
                         }}
                       />
                     </>

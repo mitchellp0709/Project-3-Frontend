@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Wall = (props) => {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const [tweets, setTweets] = useState({});
+  const url = "https://group-3-project-3.herokuapp.com/tweet/";
+  const navigate = useNavigate()
+
 
 const createTweet = async (tweet) => {
-  await fetch("https://group-3-project-3.herokuapp.com/tweet", {
+  await fetch("https://group-3-project-3.herokuapp.com/tweet/", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
@@ -38,6 +42,7 @@ const createTweet = async (tweet) => {
       username: localStorage.username,
       content: "",
     });
+    window.location.reload(true);
   }
 
   const form = (
@@ -60,6 +65,8 @@ const createTweet = async (tweet) => {
       <input type="submit" value="Send Retweet!" />
     </form>
   );
+
+
 
 
   const getTweets = async () => {
@@ -105,7 +112,7 @@ const createTweet = async (tweet) => {
             return x.map((y) => {
               return (
                 <div className="tweet">
-                  <Link to={`/user/${localStorage.userId}`} > 
+                  <Link to={`/user/${y.username}`}>
                     <h2 className="tweet-username">${y.username}</h2>
                   </Link>
 
@@ -113,10 +120,19 @@ const createTweet = async (tweet) => {
                   <div className="tweet-symbols">
                     {y.username === localStorage.username ? (
                       <>
-                        <Link to="/tweet/:id/edit">
+                        <Link to={`/tweet/${y._id}/edit`}>
                           <img src="/edit.png" alt="edit tweet" />
                         </Link>
-                        <img src="/delete.png" alt="delete tweet" />
+                        <img
+                          src="/delete.png"
+                          alt="delete tweet"
+                          onClick={async () => {
+                            await fetch(url + y._id, {
+                              method: "delete",
+                            });
+                            window.location.reload(true);
+                          }}
+                        />
                       </>
                     ) : null}
                   </div>

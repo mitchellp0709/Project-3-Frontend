@@ -6,6 +6,7 @@ import {useState} from 'react'
 import "./styles.scss"
 import Main from './pages/main'
 import Profile from './pages/profile'
+import Show from "./pages/show"
 
 
 function App() {
@@ -68,7 +69,8 @@ const createTweet = async (tweet) => {
             path="/login"
             element={<Login URL={URL} getToken={getToken} getUsername={getUsername}/>}
           />
-          <Route path="/user/:id" element={<Profile/>}/>
+          <Route path="/user/:id" element={<Profile URL={URL}/>} />
+          <Route path="/tweet/:id/edit" element={<Show URL={URL}/>}/>
         </Routes>
       </main>
     </div>

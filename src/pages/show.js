@@ -13,6 +13,15 @@ const Show = (props) => {
   // create state for form
   const [editForm, setEditForm] = useState({})
   
+
+  const url = props.URL 
+
+const getTweet = async () => {
+  const response = await fetch (`${url}tweet/oneTweet/${id}`)
+  const data = await response.json()
+  setEditForm(data)
+}
+  
   useEffect(() => {
       if(props.tweets){
           const tweet = tweets.find((t) => t._id === id);
@@ -40,42 +49,29 @@ const Show = (props) => {
         navigate("/")
     }
 
-    const removeTweet = () => {
-        props.deleteTweets(tweet._id)
-        navigate("/")
-    }
+    
 
     const form = (
         <form onSubmit={handleSubmit}>
+          
           <input
             type="text"
-            value={editForm.name}
-            name="name"
-            placeholder="name"
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            value={editForm.image}
-            name=""
-            placeholder=""
+            value={editForm.content}
+            name="content"
+            placeholder={editForm.content}
             onChange={handleChange}
           />
         
-          <input type="submit" value="" />
+          <input type="submit" value="Confirm" />
         </form>
       );
 
-    return (
-      <div className="tweet">
-        <h1>{tweet.username}</h1>
-        <h2>{tweet.title}</h2>
-        {form}
-      </div>
-    );
-  } else {
-    return <h1>No Tweet</h1>;
+   return (
+     <div className="tweet">
+      {form}
+     </div>
+   );
+    }
   }
-};
 
 export default Show;

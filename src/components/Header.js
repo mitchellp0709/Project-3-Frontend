@@ -21,7 +21,7 @@ const navigate = useNavigate()
           <h1 className="retweet-main">Retweet</h1>
         </Link>
 
-        <Link className="user-symbol" to="/user/id">
+        <Link className="user-symbol" to={`/user/${localStorage.username}`}>
           <img
             id="user-icon"
             src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"

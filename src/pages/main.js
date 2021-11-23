@@ -8,13 +8,6 @@ import FollowBar from '../components/FollowBar'
 import Wall from './wall'
 import FirstHeader from "../components/FirstHeader";
 
-// MUST RUN THIS TO HOST THE SERVER ON PORT 3004:
-//json-server --watch db.json --port 3004
-
-
-//must have run this to run the dummy server:
-//npm install -g json-server
-//I had to overwrite my permissions to do it, if you can run it locally it should work
 
 const Main = (props) => {
 
@@ -24,10 +17,8 @@ const Main = (props) => {
      return (
        <>
          <Header />
-         {/* <div className="main-container"> */}
-           {/* <FollowBar URL={props.URL} username={props.username} /> */}
            <Wall URL={props.URL} />
-         {/* </div> */}
+        
        </>
      );
    } else {

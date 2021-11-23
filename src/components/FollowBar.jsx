@@ -26,25 +26,7 @@ const FollowBar = (props) => {
         return data
     }
 
-    // const notFollowed = async () => {
-    //     const id = props.username.userId
-    //     const response = await fetch(`${props.URL}auth/${id}`, {method: "get"})
-    //     const data = await response.json()
-    //     const allUsers = await getUsers()
-    //     return await allUsers.filter((x)=>{
-    //         return !data.follows.includes(x)
-    //     })
-    // }
-
-    // const followed = async () => {
-    //     const id = props.username.userId
-    //     const response = await fetch(`${props.URL}auth/${id}`, {method: "get"})
-    //     const data = await response.json()
-    //     const allUsers = await getUsers()
-    //     return await allUsers.filter((x)=>{
-    //         data.follows.includes(x)
-    //     })
-    // }
+  
 
     const follow = async (id) => {
         await fetch(`${props.URL}tweet/follow/${userId}/${id}`, {method: 'put'})
@@ -60,8 +42,7 @@ const FollowBar = (props) => {
         getThisUser().then((data)=>setThisUser(data))
     }, [])
 
-    // const followData = followed()
-    // const unfollowedData = notFollowed()
+    
   const allData = userData
     if (!token) {
       return <h1>Please Log in</h1>;

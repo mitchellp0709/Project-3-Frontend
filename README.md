@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Project 3 - Retweet Front end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### by Mitchell Paoletti, Donovan Gallaway, & Marco De Los Santos
 
-## Available Scripts
+![Retweet Logo Which Is Totally Not a Twitter Logo Knockoff](./public/twitter.png)
 
-In the project directory, you can run:
+##Project Summary
 
-### `npm start`
+We set out to make what can only be described as the most innovative, ground breaking piece of social media since people used literal messages tied to birds. This one-of-a-kind social media masterpiece could only be described as: **Retweet.** For the first time in recorded history, users can seamlessly send messages to friends, family, and complete strangers. Have a thought? BAM!! Retweet it. It's that simple.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## User Stories
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- A user will be able to create Retweets which will be stored on their profile page
+- A user will be able to follow another user and see all of their Retweets on their home page
+- A user will be able to see all the Retweets of another user on their profile page
+- A user will be able to set their cover photo and profile picture
+- A user will be able to edit and delete their own Retweets but not those of another user
+- A user will be able to log in and out of their profile and have their Retweets and followers saved
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pages
 
-### `npm run build`
+| URL | Page | About |
+|-----|--------|--------|
+| /signup| Signup Page | Page to create an account and set a cover photo and profile picture|
+| /login| Login Page | Page where a user will sign into their account|
+| /| Home Page | A page where a user will see the Retweets of everyone they follow|
+| /user/:username| Profile Page | Page where a user will see all of the Retweets of that user|
+| /user/:username/edit| Profile Edit Page | Page where users can edit their profile picture or cover photo|
+| /login| Login Page | Page to sign into your account|
+| /tweet/:id/edit| Tweet Edit Page | Page where users can edit their existing Retweets|
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Component  | About |
+|-----|--------|
+| First Header| Header for the login and signup page that will direct users to log in or create an account | 
+|  Header| Header for all other pages that has a link to the main page, the user's profile page, & a link to log out  |
+| Follow Bar| A side bar on the main page that shows all existing users, a link to their profile, and the option to follow them  |  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Challenges
 
-### `npm run eject`
+The biggest challenge on this project was the integration of the front end and the backend with user authentication. Merging these two was a challenge to see how we were going to utilize the user token to check if a user was logged in. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Another large challenge was coordinating the routes with the backend. The larger the scope of the front end grew, the more paths were required on the backend. We had to add several routes to the backend as the project progressed to accomodate the scale of the front end features. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## List of Technologies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Node
+- React
+- Sass
+- MongoDB
